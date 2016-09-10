@@ -1,0 +1,26 @@
+Materialen:
+
+
+hogedrukspuit + buizen
+open watertank
+hoofd met gaten in de ogen
+doorzichtige doos dat tegen water kan waar het hoofd in zit
+container voor de watertank
+afstandssensor
+ardruino (of iets soortgelijks)
+
+
+verbind de hogedrukspuit aan de watertank 
+verbind deze weer met het hoofd bijna door de ogen via de buizen. 
+verbind de ardruino aan de hogedrukspuit en de afstandssensor
+
+zet het hoofd in de doos boven de watertank
+
+De hoofddoos zouden gaatjes hebben aan de onderkant of een trechter die het water terugleidt naar de tank
+
+de afstandsensor zou alleen heel dicht bij de voorkant van de hoofddoos moeten detecteren
+wanneer het water word gespoten gaat het water weer terug in de watertank.
+
+
+
+ 
