@@ -2,85 +2,56 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	x = ofRandom(0, ofGetWidth());
-	y = ofRandom(0, ofGetHeight());
-	speedX = ofRandom(-10, 10);
-	speedY = ofRandom(-10, 10);
-	color = RGB(0, 0, 0);
-	radius = ofRandom(1,20);
-
-	x2 = ofRandom(0, ofGetWidth());
-	y2 = ofRandom(0, ofGetHeight());
-	speedX2 = ofRandom(-10, 10);
-	speedY2 = ofRandom(-10, 10);
-	color2 = RGB(0, 0, 0);
-	radius2 = ofRandom(1, 20);
+	ofBackground(220, 0, 50);
+	for (int i = 0; i < 10; i++) {
+		balls[i].x = ofRandom(0, ofGetWidth());
+		balls[i].y = ofRandom(0, ofGetHeight());
+		balls[i].speedX = ofRandom(-10, 10);
+		balls[i].speedY = ofRandom(-10, 10);
+		balls[i].color = (ofColor(ofRandom(50, 255), ofRandom(50, 255), ofRandom(50, 255)));
+		balls[i].radius = ofRandom(1, 20);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	for (int i = 0; i < 10; i++) {
 
-	if (x <= 0) {
-		x = 0;
+		if (balls[i].x <= 0) {
+			balls[i].x = 0;
 
-		speedX = -speedX;
-		color = RGB(ofRandom(1, 225), 0, 0);
-	}
-	else if (x >= ofGetWidth()) {
-		x = ofGetWidth();
-		speedX = -speedX;
-		color = RGB(ofRandom(1, 225), 0, 0);
-	}
+			balls[i].speedX = -balls[i].speedX;
+			balls[i].color = (ofColor(ofRandom(50, 255), ofRandom(50, 255), ofRandom(50, 255)));
+		}
+		else if (balls[i].x >= ofGetWidth()) {
+			balls[i].x = ofGetWidth();
+			balls[i].speedX = -balls[i].speedX;
+			balls[i].color = (ofColor(ofRandom(50, 255), ofRandom(50, 255), ofRandom(50, 255)));
+		}
 
-	if (y <= 0) {
-		y = 0;
-		speedY = -speedY;
-		color = RGB(ofRandom(1, 225), 0, 0);
+		if (balls[i].y <= 0) {
+			balls[i].y = 0;
+			balls[i].speedY = -balls[i].speedY;
+			balls[i].color = (ofColor(ofRandom(50, 255), ofRandom(50, 255), ofRandom(50, 255)));
+		}
+		else if (balls[i].y >= ofGetHeight()) {
+			balls[i].y = ofGetHeight();
+			balls[i].speedY = -balls[i].speedY;
+			balls[i].color = (ofColor(ofRandom(50, 255), ofRandom(50, 255), ofRandom(50, 255)));
+		}
+		//balls[i].speedY += 1;
+		balls[i].x += balls[i].speedX;
+		balls[i].y += balls[i].speedY;
+		balls[i].radius = balls[i].y / 30+20;
 	}
-	else if (y >= ofGetHeight()) {
-		y = ofGetHeight();
-		speedY = -speedY;
-		color = RGB(ofRandom(1, 225), 0, 0);
-	}
-
-	x += speedX;
-	y += speedY;
-	radius = y /50;
-
-	if (x2 <= 0) {
-		x2 = 0;
-
-		speedX2 = -speedX2;
-		color2 = RGB(ofRandom(1, 225), 0, 0);
-	}
-	else if (x2 >= ofGetWidth()) {
-		x2 = ofGetWidth();
-		speedX2 = -speedX2;
-		color2 = RGB(ofRandom(1, 225), 0, 0);
-	}
-
-	if (y2 <= 0) {
-		y2 = 0;
-		speedY2 = -speedY2;
-		color2 = RGB(ofRandom(1, 225), 0, 0);
-	}
-	else if (y2 >= ofGetHeight()) {
-		y2 = ofGetHeight();
-		speedY2 = -speedY2;
-		color2 = RGB(ofRandom(1, 225), 0, 0);
-	}
-
-	x2 += speedX2;
-	y2 += speedY2;
-	radius2 = x / 60;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofSetColor(color);
-	ofDrawCircle(x, y, radius);
-	ofSetColor(color2);
-	ofDrawCircle(x2, y2, radius2);
+	for (int i = 0; i < 10; i++) {
+		ofSetColor(balls[i].color);
+		ofDrawCircle(balls[i].x, balls[i].y, balls[i].radius);
+	}
 }
 
