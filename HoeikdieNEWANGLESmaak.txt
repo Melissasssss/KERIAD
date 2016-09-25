@@ -1,0 +1,12 @@
+Wat heb ik nodig?
+100 lampjes met eventueel plastic omhulsel
+infrarood sensor
+ardruino
+
+
+
+Hoe moet ik het maken?
+als eerst moet ik partronen en animaties maken  voor de ledjes. Hiervoor moet ik aantal functies maken. In elke functie zit dan een
+animatie. Daarnaast moet de infrarood sensor soms aangaan en dan moeten de ledjes daaraan verbonden worden.
+Elke animatie duurt even lang, dus kan ik een timer instellen wanneer hij wisselt van animatie naar sensor output.
+ 
