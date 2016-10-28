@@ -1,30 +1,28 @@
 #include "ofApp.h"
-
-int index = 0;
+//int for storing the byte data from Arduino.
 int byteData;
 //--------------------------------------------------------------
-void ofApp::setup(){
-	gifloader.load("stijngif.gif");
-	gifloader2.load("stijnkleingif.gif");
-	geluid.loadSound("Hallo.wav");
-	frame = 0;
+void ofApp::setup() {
+
+	//loading all the bin files
+	plaatje.load("stijn.jpg");
+	geluid.loadSound("fluit.wav");
+	kin.load("stijnklein.jpg");
+	kin.resize(2880,1620);
+
+	//General setup of look of window.
+	ofBackground(255);
 	komcheck = 0;
 	komtimer = 0;
 
+	//serial port setup. using COM3 for Windows port.
+	//Also using baud rate 9600, same in Arduino sketch.
 	serial.setup("COM3", 9600);
-
 }
-
 //--------------------------------------------------------------
-void ofApp::update(){
-	if (ofGetFrameNum() % 25 == 0) {
-		frame++;
-		if (frame == gifloader.pages.size()) frame = 0;
-	}
-
-
+void ofApp::update() {
 	//see if the hand has been close enough
-	if (komcheck == 0 && byteData >= 1 && byteData <= 8 && komtimer > 110   ) {
+	if (komcheck == 0 && byteData >= 1 && byteData <= 8 && komtimer > 250) {
 		komcheck = 1;
 
 	}
@@ -38,17 +36,19 @@ void ofApp::update(){
 			soundcheck == TRUE;
 		}
 	}
-	//if statement that puts the picture back and turns the soundcheck off
-	if (komcheck == 2 && byteData >= 1 && byteData <= 8) {
-		komcheck = 0;
-		//soundcheck = FALSE;
-		komtimer = 0;
+		//if statement that puts the picture back and turns the soundcheck off
+		if (komcheck == 2 && byteData >= 1 && byteData <= 8) {
+			komcheck = 0;
+			//soundcheck = FALSE;
+			komtimer = 0;
 
-	}
-	//puts the timer in motion
-	if (komcheck == 0) {
-		komtimer += 1;
-	}
+		}
+		//puts the timer in motion
+		if (komcheck == 0) {
+			komtimer+=1;
+		}
+	
+
 
 
 	//if statement to inform user if Arduino is sending serial messages. 
@@ -67,23 +67,16 @@ void ofApp::update(){
 	}
 
 }
-
 //--------------------------------------------------------------
-void ofApp::draw(){
-	ofBackground(0);
-	//drawing the first image
-	ofImage img = gifloader.pages[frame];
-	ofPixels pix = img.getPixels();
-	img.setFromPixels(pix);
-	img.draw(0, 0);
-
-	//when the hand is pulled back it shows a second image
+void ofApp::draw() {
+	plaatje.draw(0,0);
 	if (komcheck == 2) {
-		ofImage img2 = gifloader2.pages[frame];
-		ofPixels pix2 = img2.getPixels();
-		img2.setFromPixels(pix2);
-		img2.draw(0, 0);
+
+		kin.draw(-400, -200);
 	}
+
+
+
 	//drawing the string version pf byteData on oF window.
 	ofDrawBitmapString(msg, 50, 100);
 	ofDrawBitmapString(komcheck, 100, 100);

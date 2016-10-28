@@ -1,24 +1,21 @@
 #pragma once
 
 #include "ofMain.h"
-
-#include "ofxGif.h"
-
-class ofApp : public ofBaseApp{
-
-	public:
-		void setup();
-		void update();
-		void draw();
-
-		string msg;
-		float komcheck;
-		float komtimer;
-		bool soundcheck;
-		ofSoundPlayer geluid;
-		ofSerial serial;
-		
-		ofxGIF::fiGifLoader gifloader;
-		ofxGIF::fiGifLoader gifloader2;
-		int frame;
+class ofApp : public ofBaseApp {
+public:
+	//Standard oF functions.
+	void setup();
+	void update();
+	void draw();
+	ofImage plaatje;
+	ofImage kin;
+	ofSoundPlayer geluid;
+	//Custom variables for on screen string and font.
+	string msg;
+	float komcheck;
+	float komtimer;
+	ofTrueTypeFont font;
+	//New serial object.
+	ofSerial serial;
+	bool soundcheck;
 };
