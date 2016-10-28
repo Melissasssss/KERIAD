@@ -1,0 +1,17 @@
+Als eerst probeerde ik het te doen op de manier zoals we het in de les hadden gedaan, met firmata. 
+Dit lukte mij echt niet. De arduino gaf geen waardes door. Dus ging ik maar googlen naar tutorials. Daar kwam ik deze tegen:
+http://www.instructables.com/id/Ultrasonic-sensor-in-openFrameworks-using-Arduino/
+Dit legde erg goed uit wat ik moest doen.
+Het nadeel aan deze manier was dat ik niet wist hoe ik 2 sensoren moest toevoegen. Want toen kreeg ik nog meer errors. Dit was niet een groot probleem, want ik had uiteindelijk 
+maar 1 sensor nodig.  
+Daarna kon ik hieruit op verder bouwen.
+Eerst ging ik plaatjes laten resizen door middel van de sonar sensor. De ingezoemde versie zag er nooit erg mooi uit. Dus ging ik werken met 2 foto's Waarvan de een
+al dichterbij genomen was. 
+Daarna ging ik geluid inplementeren. Dit was geen lastige stap, dit hebben we ook in de les behandeld.
+Als laatst ging ik kijken naar gifjes. Hoe ik in plaats van 2 stilstaande plaatjes 2 gifjes kon laten bewegen. 
+Dit was wel moeizaam, na de hulp van Edwin ging het al beter. Maar toen ik de bestaande code met de gif code wou combineren. Herkende openframeworks de addons ineens niet meer. 
+Dit was erg apart. Dus heb ik stukje voor stukje alles bij de werkende gif code moeten kopieeën en elke keer moeten kijken of hij het nog wel deed. Uiteindelijk deed hij het,
+dus ik weet niet waar het aan lag. 
+
+Prototype 1 is met stilstaand beeld
+Prototype 2 is met gifjes
